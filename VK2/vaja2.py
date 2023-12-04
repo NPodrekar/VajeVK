@@ -1,3 +1,4 @@
+import os
 def string_to_bits(data):
     bytes = ""
     for n in range(len(data)):
@@ -109,4 +110,11 @@ print(len(sha1(bytes)))
 bytes = file_to_bits("Izpitna vprašanja Varkom2011.pdf")
 print(sha1(bytes)) 
 
+# PR WINDOWSU JE TREBA \ ZAMENJAT Z / NA NASLOVU
+naslov = "C:/Users/npnik/OneDrive/Namizje"
+for file in os.listdir(naslov):
+     file_path = os.path.join(naslov, file)
+     bytes = file_to_bits(file_path)
+     if bytes is not None:
+        print(sha1(bytes))
 
