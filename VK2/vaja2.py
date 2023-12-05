@@ -100,7 +100,7 @@ def sha1(bytes):
         h4 = h4 + e & 0xffffffff
 
     return '{:08x}{:08x}{:08x}{:08x}{:08x}'.format(h0,h1,h2,h3,h4)
-
+"""
 bytes = string_to_bits("")
 print(bytes)
 
@@ -109,12 +109,31 @@ print(len(sha1(bytes)))
 
 bytes = file_to_bits("Izpitna vprašanja Varkom2011.pdf")
 print(sha1(bytes)) 
-
+"""
 # PR WINDOWSU JE TREBA \ ZAMENJAT Z / NA NASLOVU
-naslov = "C:/Users/npnik/OneDrive/Namizje"
+hashList= []
+
+i = 0
+naslov = "C:/Users/student/Desktop"
 for file in os.listdir(naslov):
      file_path = os.path.join(naslov, file)
      bytes = file_to_bits(file_path)
      if bytes is not None:
+        print(file_path)
         print(sha1(bytes))
+        hashList.append(sha1(bytes))
+        
+
+hashOg = []
+hashRep = [] 
+for i in hashList:
+    if i not in hashOg:
+        hashOg.append(i)
+    else:
+        hashRep.append(i)
+        
+
+print("Št ponovljenih hašhou: ", len(hashRep))
+        
+
 
